@@ -70,6 +70,12 @@ public class Renderer {
     shaderProgram.unbind();
   }
 
+  public void setFragmentColor(Vector4f color) {
+    shaderProgram.bind();
+    shaderProgram.setUniform("mix_color", color);
+    shaderProgram.unbind();
+  }
+
   public void cleanup() {
     if (shaderProgram != null) {
       shaderProgram.cleanup();

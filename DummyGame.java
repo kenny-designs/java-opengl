@@ -1,5 +1,6 @@
 import org.joml.Vector2f;
 import org.joml.Vector3f;
+import org.joml.Vector4f;
 import static org.lwjgl.glfw.GLFW.*;
 
 public class DummyGame implements IGameLogic {
@@ -143,6 +144,17 @@ public class DummyGame implements IGameLogic {
     }
     else if (window.isKeyPressed(GLFW_KEY_X)) {
       cameraInc.y = 1;
+    }
+
+    // Change color
+    if (window.isKeyPressed(GLFW_KEY_R)) {
+      renderer.setFragmentColor(new Vector4f(1f, 0, 0, 0));
+    }
+    else if (window.isKeyPressed(GLFW_KEY_G)) {
+      renderer.setFragmentColor(new Vector4f(0, 1f, 0, 0));
+    }
+    else if (window.isKeyPressed(GLFW_KEY_B)) {
+      renderer.setFragmentColor(new Vector4f(0, 0, 1f, 0));
     }
   }
 
