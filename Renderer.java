@@ -1,4 +1,5 @@
 import org.joml.Matrix4f;
+import org.joml.Vector4f;
 import static org.lwjgl.opengl.GL11.*;
 
 public class Renderer {
@@ -26,6 +27,7 @@ public class Renderer {
     shaderProgram.createUniform("projectionMatrix");
     shaderProgram.createUniform("modelViewMatrix");
     shaderProgram.createUniform("texture_sampler");
+    shaderProgram.createUniform("mix_color");
   }
 
   public void clear() {

@@ -3,12 +3,12 @@ import org.joml.Vector3f;
 import static org.lwjgl.glfw.GLFW.*;
 
 public class DummyGame implements IGameLogic {
-  private static final float MOUSE_SENSITIVITY = 0.2f;
+  private static final float MOUSE_SENSITIVITY = 0.2f,
+                             CAMERA_POS_STEP = 0.05f;
   private final Vector3f cameraInc;
   private final Renderer renderer;
   private final Camera camera;
   private GameItem[] gameItems;
-  private static final float CAMERA_POS_STEP = 0.05f;
 
   public DummyGame() {
     renderer  = new Renderer();
@@ -109,22 +109,6 @@ public class DummyGame implements IGameLogic {
     };
 
     createCubes(cubePositions, mesh);
-
-      /*
-    GameItem gameItem1 = new GameItem(mesh);
-    gameItem1.setScale(0.5f);
-    gameItem1.setPosition(0, 0, -2);
-    GameItem gameItem2 = new GameItem(mesh);
-    gameItem2.setScale(0.5f);
-    gameItem2.setPosition(0.5f, 0.5f, -2);
-    GameItem gameItem3 = new GameItem(mesh);
-    gameItem3.setScale(0.5f);
-    gameItem3.setPosition(0, 0, -2.5f);
-    GameItem gameItem4 = new GameItem(mesh);
-    gameItem4.setScale(0.5f);
-    gameItem4.setPosition(0.5f, 0, -2.5f);
-    gameItems = new GameItem[] { gameItem1, gameItem2, gameItem3, gameItem4 };
-    */
   }
 
   public void createCubes(Vector3f[] positions, Mesh cubeMesh) {
