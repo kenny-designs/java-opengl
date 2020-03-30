@@ -1,47 +1,31 @@
-Main.class : Main.java
-	javac -cp ".:jars/*" Main.java
+JC = javac
+JFLAGS = -cp ".:jars/*"
+.SUFFIXES : .java .class
+.java.class :
+	$(JC) $(JFLAGS) $*.java
 
-GameEngine.class : GameEngine.java
-	javac -cp ".:jars/*" GameEngine.java
+CLASSES = \
+					Main.java \
+					GameEngine.java \
+					IGameLogic.java \
+					Window.java \
+					Timer.java \
+					Teapot.java \
+					Camera.java \
+					Renderer.java \
+					Transformation.java \
+					GameItem.java \
+					Mesh.java \
+					Texture.java \
+					ShaderProgram.java \
+					Utils.java
 
-IGameLogic.class : IGameLogic.java
-	javac -cp ".:jars/*" IGameLogic.java
+default: classes
 
-Window.class : Window.java
-	javac -cp ".:jars/*" Window.java
+classes : $(CLASSES:.java=.class)
 
-Timer.class : Timer.java
-	javac -cp ".:jars/*" Timer.java
-
-Teapot.class : Teapot.java
-	javac -cp ".:jars/*" Teapot.java
-
-Camera.class : Camera.java
-	javac -cp ".:jars/*" Camera.java
-
-Renderer.class : Renderer.java
-	javac -cp ".:jars/*" Renderer.java
-
-Transformation.class : Transformation.java
-	javac -cp ".:jars/*" Transformation.java
-
-GameItem.class : GameItem.java
-	javac -cp ".:jars/*" GameItem.java
-
-Mesh.class : Mesh.java
-	javac -cp ".:jars/*" Mesh.java
-
-Texture.class : Texture.java
-	javac -cp ".:jars/*" Texture.java
-
-ShaderProgram.class : ShaderProgram.java
-	javac -cp ".:jars/*" ShaderProgram.java
-
-Utils.class : Utils.java
-	javac -cp ".:jars/*" Utils.java
-
-run : Main.class GameEngine.class IGameLogic.class Window.class Timer.class Teapot.class Camera.class Renderer.class Transformation.class GameItem.class Mesh.class Texture.class ShaderProgram.class Utils.class
-	java -cp ".:jars/*" Main
+run : Main.class
+	java $(JFLAGS) Main
 
 clean :
-	rm *.class
+	$(RM) *.class
