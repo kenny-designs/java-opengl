@@ -1,7 +1,15 @@
+package game;
+
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 import static org.lwjgl.glfw.GLFW.*;
+import engine.GameItem;
+import engine.IGameLogic;
+import engine.Window;
+import engine.graphics.Camera;
+import engine.graphics.Mesh;
+import engine.graphics.Texture;
 
 public class Teapot implements IGameLogic {
   private static final float MOUSE_SENSITIVITY = 0.2f,
@@ -44,7 +52,7 @@ public class Teapot implements IGameLogic {
       0, 1, 3, 3, 1, 2 // Front face
     };
 
-    Texture texture = new Texture("teapot.png");
+    Texture texture = new Texture("./teapot.png");
     Mesh mesh = new Mesh(positions, textCoords, indices, texture);
     gameItems = new GameItem[] { new GameItem(mesh) };
   }

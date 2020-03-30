@@ -1,3 +1,5 @@
+package engine;
+
 public class GameEngine implements Runnable {
   public static final int TARGET_FPS = 60,
                           TARGET_UPS = 30;

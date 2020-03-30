@@ -1,31 +1,32 @@
 JC = javac
-JFLAGS = -cp ".:jars/*"
+JARS = -cp ".:jars/*"
+TARGET_DIR = -d "./target"
 .SUFFIXES : .java .class
 .java.class :
-	$(JC) $(JFLAGS) $*.java
+	$(JC) $(JARS) $(TARGET_DIR) $*.java
 
 CLASSES = \
-					Main.java \
-					GameEngine.java \
-					IGameLogic.java \
-					Window.java \
-					Timer.java \
-					Teapot.java \
-					Camera.java \
-					Renderer.java \
-					Transformation.java \
-					GameItem.java \
-					Mesh.java \
-					Texture.java \
-					ShaderProgram.java \
-					Utils.java
+					game/Main.java \
+					engine/GameEngine.java \
+					engine/IGameLogic.java \
+					engine/Window.java \
+				  engine/Timer.java \
+					game/Teapot.java \
+					engine/graphics/Camera.java \
+					game/Renderer.java \
+					engine/graphics/Transformation.java \
+					engine/GameItem.java \
+					engine/graphics/Mesh.java \
+					engine/graphics/Texture.java \
+					engine/graphics/ShaderProgram.java \
+					engine/Utils.java
 
 default: classes
 
 classes : $(CLASSES:.java=.class)
 
-run : Main.class
-	java $(JFLAGS) Main
+run : $(CLASSES:.java=.class)
+	java -cp .:target:jars/* game.Main
 
 clean :
-	$(RM) *.class
+	find ./target -name "*.class" -type f -delete

@@ -1,3 +1,8 @@
+package game;
+
+import engine.GameEngine;
+import engine.IGameLogic;
+
 public class Main {
   public static void main(String[] args) {
     try {
