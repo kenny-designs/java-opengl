@@ -100,6 +100,7 @@ public class Mesh {
   public void render() {
     // Activate first texture bank
     glActiveTexture(GL_TEXTURE0);
+
     // Bind the texture
     glBindTexture(GL_TEXTURE_2D, texture.getId());
 

@@ -23,7 +23,7 @@ public class Renderer {
     shaderProgram.createFragmentShader(Utils.loadResource("fragment.fs"));
     shaderProgram.link();
 
-    // Create uniforms for modelView and projection matrices and texture
+    // Create uniforms
     shaderProgram.createUniform("projectionMatrix");
     shaderProgram.createUniform("modelViewMatrix");
     shaderProgram.createUniform("texture_sampler");
@@ -70,6 +70,10 @@ public class Renderer {
     shaderProgram.unbind();
   }
 
+  /**
+   * Updates the fragment shaders mix_color uniform to the given color
+   * @param color The new color of our game objects
+   */ 
   public void setFragmentColor(Vector4f color) {
     shaderProgram.bind();
     shaderProgram.setUniform("mix_color", color);
