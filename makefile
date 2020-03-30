@@ -13,9 +13,6 @@ Window.class : Window.java
 Timer.class : Timer.java
 	javac -cp ".:jars/*" Timer.java
 
-MouseInput.class : MouseInput.java
-	javac -cp ".:jars/*" MouseInput.java
-
 DummyGame.class : DummyGame.java
 	javac -cp ".:jars/*" DummyGame.java
 
@@ -43,7 +40,7 @@ ShaderProgram.class : ShaderProgram.java
 Utils.class : Utils.java
 	javac -cp ".:jars/*" Utils.java
 
-run : Main.class GameEngine.class IGameLogic.class Window.class Timer.class MouseInput.class DummyGame.class Camera.class Renderer.class Transformation.class GameItem.class Mesh.class Texture.class ShaderProgram.class Utils.class
+run : Main.class GameEngine.class IGameLogic.class Window.class Timer.class DummyGame.class Camera.class Renderer.class Transformation.class GameItem.class Mesh.class Texture.class ShaderProgram.class Utils.class
 	java -cp ".:jars/*" Main
 
 clean :
