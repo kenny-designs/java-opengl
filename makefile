@@ -13,8 +13,8 @@ Window.class : Window.java
 Timer.class : Timer.java
 	javac -cp ".:jars/*" Timer.java
 
-DummyGame.class : DummyGame.java
-	javac -cp ".:jars/*" DummyGame.java
+Teapot.class : Teapot.java
+	javac -cp ".:jars/*" Teapot.java
 
 Camera.class : Camera.java
 	javac -cp ".:jars/*" Camera.java
@@ -40,7 +40,7 @@ ShaderProgram.class : ShaderProgram.java
 Utils.class : Utils.java
 	javac -cp ".:jars/*" Utils.java
 
-run : Main.class GameEngine.class IGameLogic.class Window.class Timer.class DummyGame.class Camera.class Renderer.class Transformation.class GameItem.class Mesh.class Texture.class ShaderProgram.class Utils.class
+run : Main.class GameEngine.class IGameLogic.class Window.class Timer.class Teapot.class Camera.class Renderer.class Transformation.class GameItem.class Mesh.class Texture.class ShaderProgram.class Utils.class
 	java -cp ".:jars/*" Main
 
 clean :

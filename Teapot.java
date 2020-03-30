@@ -3,7 +3,7 @@ import org.joml.Vector3f;
 import org.joml.Vector4f;
 import static org.lwjgl.glfw.GLFW.*;
 
-public class DummyGame implements IGameLogic {
+public class Teapot implements IGameLogic {
   private static final float MOUSE_SENSITIVITY = 0.2f,
                              CAMERA_POS_STEP   = 0.05f;
   private final Vector3f cameraInc;
@@ -11,7 +11,7 @@ public class DummyGame implements IGameLogic {
   private final Camera camera;
   private GameItem[] gameItems;
 
-  public DummyGame() {
+  public Teapot() {
     renderer  = new Renderer();
     camera    = new Camera(new Vector3f(0, 0, 1.0f), new Vector3f());
     cameraInc = new Vector3f();
