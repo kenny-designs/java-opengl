@@ -1,3 +1,5 @@
+package engine.graphics;
+
 import org.lwjgl.system.MemoryUtil;
 
 import java.nio.FloatBuffer;
@@ -98,8 +100,9 @@ public class Mesh {
   }
 
   public void render() {
-    // Activate firs texture bank
+    // Activate first texture bank
     glActiveTexture(GL_TEXTURE0);
+
     // Bind the texture
     glBindTexture(GL_TEXTURE_2D, texture.getId());
 

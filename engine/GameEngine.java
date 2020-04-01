@@ -1,11 +1,12 @@
+package engine;
+
 public class GameEngine implements Runnable {
-  public static final int TARGET_FPS = 75,
+  public static final int TARGET_FPS = 60,
                           TARGET_UPS = 30;
 
   private final Window window;
   private final Timer timer;
   private final IGameLogic gameLogic;
-  private final MouseInput mouseInput;
 
   public GameEngine(String windowTitle,
       int width,
@@ -13,7 +14,6 @@ public class GameEngine implements Runnable {
       boolean vSync,
       IGameLogic gameLogic) throws Exception {
     window         = new Window(windowTitle, width, height, vSync);
-    mouseInput     = new MouseInput();
     this.gameLogic = gameLogic;
     timer          = new Timer();
   }
@@ -35,7 +35,6 @@ public class GameEngine implements Runnable {
   protected void init() throws Exception {
     window.init();
     timer.init();
-    mouseInput.init(window);
     gameLogic.init(window);
   }
 
@@ -82,12 +81,11 @@ public class GameEngine implements Runnable {
   }
 
   protected void input() {
-    mouseInput.input(window);
-    gameLogic.input(window, mouseInput);
+    gameLogic.input(window);
   }
 
   protected void update(float interval) {
-    gameLogic.update(interval, mouseInput);
+    gameLogic.update(interval);
   }
 
   protected void render() {

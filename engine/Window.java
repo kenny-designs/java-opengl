@@ -1,3 +1,5 @@
+package engine;
+
 import static org.lwjgl.glfw.GLFW.*;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
@@ -29,8 +31,8 @@ public class Window {
     }
 
     glfwDefaultWindowHints(); // optional, the current window hints are already the default
-    glfwWindowHint(GLFW_VISIBLE, GL_FALSE);   // window will stay hidden after creation
-    glfwWindowHint(GLFW_RESIZABLE, GL_TRUE); // the window will be resizeable
+    glfwWindowHint(GLFW_VISIBLE, GL_FALSE);
+    glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -58,6 +60,7 @@ public class Window {
 
     // Get the resolution of the primary monitor
     GLFWVidMode vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+
     // Center our window
     glfwSetWindowPos(
         windowHandle,

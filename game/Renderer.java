@@ -1,5 +1,14 @@
+package game;
+
 import org.joml.Matrix4f;
+import org.joml.Vector4f;
 import static org.lwjgl.opengl.GL11.*;
+import engine.GameItem;
+import engine.Utils;
+import engine.Window;
+import engine.graphics.Camera;
+import engine.graphics.ShaderProgram;
+import engine.graphics.Transformation;
 
 public class Renderer {
   /**
@@ -18,14 +27,15 @@ public class Renderer {
   public void init(Window window) throws Exception {
     // Create shader
     shaderProgram = new ShaderProgram();
-    shaderProgram.createVertexShader(Utils.loadResource("vertex.vs"));
-    shaderProgram.createFragmentShader(Utils.loadResource("fragment.fs"));
+    shaderProgram.createVertexShader(Utils.loadResource("../shaders/vertex.vs"));
+    shaderProgram.createFragmentShader(Utils.loadResource("../shaders/fragment.fs"));
     shaderProgram.link();
 
-    // Create uniforms for modelView and projection matrices and texture
+    // Create uniforms
     shaderProgram.createUniform("projectionMatrix");
     shaderProgram.createUniform("modelViewMatrix");
     shaderProgram.createUniform("texture_sampler");
+    shaderProgram.createUniform("mix_color");
   }
 
   public void clear() {
@@ -65,6 +75,16 @@ public class Renderer {
       gameItem.getMesh().render();
     }
 
+    shaderProgram.unbind();
+  }
+
+  /**
+   * Updates the fragment shaders mix_color uniform to the given color
+   * @param color The new color of our game objects
+   */ 
+  public void setFragmentColor(Vector4f color) {
+    shaderProgram.bind();
+    shaderProgram.setUniform("mix_color", color);
     shaderProgram.unbind();
   }
 

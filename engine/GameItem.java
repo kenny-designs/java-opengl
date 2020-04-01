@@ -1,4 +1,7 @@
+package engine;
+
 import org.joml.Vector3f;
+import engine.graphics.Mesh;
 
 public class GameItem {
   private final Mesh mesh; 

@@ -1,50 +1,32 @@
-Main.class : Main.java
-	javac -cp ".:jars/*" Main.java
+JC = javac
+JARS = -cp ".:jars/*"
+TARGET_DIR = -d "./target"
+.SUFFIXES : .java .class
+.java.class :
+	$(JC) $(JARS) $(TARGET_DIR) $*.java
 
-GameEngine.class : GameEngine.java
-	javac -cp ".:jars/*" GameEngine.java
+CLASSES = \
+					game/Main.java \
+					engine/GameEngine.java \
+					engine/IGameLogic.java \
+					engine/Window.java \
+				  engine/Timer.java \
+					game/Teapot.java \
+					engine/graphics/Camera.java \
+					game/Renderer.java \
+					engine/graphics/Transformation.java \
+					engine/GameItem.java \
+					engine/graphics/Mesh.java \
+					engine/graphics/Texture.java \
+					engine/graphics/ShaderProgram.java \
+					engine/Utils.java
 
-IGameLogic.class : IGameLogic.java
-	javac -cp ".:jars/*" IGameLogic.java
+default: classes
 
-Window.class : Window.java
-	javac -cp ".:jars/*" Window.java
+classes : $(CLASSES:.java=.class)
 
-Timer.class : Timer.java
-	javac -cp ".:jars/*" Timer.java
-
-MouseInput.class : MouseInput.java
-	javac -cp ".:jars/*" MouseInput.java
-
-DummyGame.class : DummyGame.java
-	javac -cp ".:jars/*" DummyGame.java
-
-Camera.class : Camera.java
-	javac -cp ".:jars/*" Camera.java
-
-Renderer.class : Renderer.java
-	javac -cp ".:jars/*" Renderer.java
-
-Transformation.class : Transformation.java
-	javac -cp ".:jars/*" Transformation.java
-
-GameItem.class : GameItem.java
-	javac -cp ".:jars/*" GameItem.java
-
-Mesh.class : Mesh.java
-	javac -cp ".:jars/*" Mesh.java
-
-Texture.class : Texture.java
-	javac -cp ".:jars/*" Texture.java
-
-ShaderProgram.class : ShaderProgram.java
-	javac -cp ".:jars/*" ShaderProgram.java
-
-Utils.class : Utils.java
-	javac -cp ".:jars/*" Utils.java
-
-run : Main.class GameEngine.class IGameLogic.class Window.class Timer.class MouseInput.class DummyGame.class Camera.class Renderer.class Transformation.class GameItem.class Mesh.class Texture.class ShaderProgram.class Utils.class
-	java -cp ".:jars/*" Main
+run : $(CLASSES:.java=.class)
+	java -cp .:target:jars/* game.Main
 
 clean :
-	rm *.class
+	find ./target -name "*.class" -type f -delete
